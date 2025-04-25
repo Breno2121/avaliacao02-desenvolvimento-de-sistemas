@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+'use client'
+
+import { useEffect, useState } from 'react';
 
 export default function MarketList() {
   useEffect(() => {
@@ -11,10 +13,19 @@ export default function MarketList() {
     // SALVA O VALOR NO ESTADO
   }
 
-  function handleAddItem() {
-    // CRIAR O OBJETO DO ITEM
-    // CHAMA A API PARA ADICIONAR O ITEM
-    // CARREGA OS PRODUTOS NOVAMENTE // loadItens();
+  type TextareaProps = {
+    message: string;
+    setMessage: (value: string) => void;
+  }
+  function handleAddItem({ message, setMessage }: TextareaProps) {
+    
+    return (
+      <textarea
+        placeholder={"Adicionar uma nova tarefa"}
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+    )
   }
 
   function handleRemoveItem(id: string) {
@@ -30,6 +41,27 @@ export default function MarketList() {
   }
 
   return (
-    <h1>MarketList</h1>
+    <div>
+      <h1>MarketList</h1>
+
+      <h2>Compras da semana</h2>
+
+      <div className='container'>
+        <div className='inputs'>
+          <textarea
+            placeholder={"Adicionar uma nova tarefa"}
+
+          />
+          <button id="button-adicionar" >
+            Adicionar item
+          </button>
+        </div>
+      <li>
+        <h1>ITEMSSS</h1>
+      </li>
+
+      </div>
+    </div>
+
   );
 }
